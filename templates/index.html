@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html l6ang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Select your crop according to your soil and climate | Farmora.com </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300&family=Tiro+Devanagari+Hindi&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="logo.png" alt="farmora.com">
+        </div>
+        <ul>
+            <li class="item"><a href="#">Home</a></li>
+            <li class="item"><a href="#">Services</a></li>
+            <li class="item"><a href="#">About Us</a></li>
+            <li class="item"><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h1>Current Weather</h1>
+	<div id="weather">
+		<img id="weather-icon" src="" alt="Weather Icon">
+		<p id="location"></p>
+		<p id="temperature"></p>
+	</div>
+
+	<script>
+		// Get user's location using Geolocation API
+		navigator.geolocation.getCurrentPosition(function(position) {
+			// Get latitude and longitude from geolocation
+			const lat = position.coords.latitude;
+			const lon = position.coords.longitude;
+
+			// Use Weather API to get current weather based on latitude and longitude
+			const apiKey = "33548703ab79a3312ac7e7efc1c402c1";
+			const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+			fetch(apiUrl)
+				.then(response => response.json())
+				.then(data => {
+					// Update HTML with weather data
+					document.getElementById("location").textContent = data.name;
+					document.getElementById("temperature").textContent = `${data.main.temp}°C`;
+					document.getElementById("weather-icon").src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+                    console.log(`Temperature: ${data.main.temp}°C`);
+                })
+				.catch(error => console.error(error));
+		});
+	</script>
+     <form action="{{url_for('predict')}}"method="post">
+        <input type="number" name="crop type of soil" placeholder="crop type field" required="required"/><br>
+        <input type="number" name="pH of soil" placeholder="pH of the field" required="required"/><br>
+        <input type="number" name="Temperature " placeholder="Temperature of the field" required="required"/><br>
+        <input type="number" name="soil type" placeholder="soil type of the field" required="required"/><br>
+        <input type="number" name="annual rainfall" placeholder="rainfall on the field" required="required"/><br>
+        <input type="number" name="location" placeholder="location of  the field" required="required"/><br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">"Detect crop"</button>
+    </form>
+    <h4 style="color:yellow:">
+        {{prediction_text}}
+    </h4>
+        <p>अब अपना काम आराम से करो
+        </p>
+        <button class="btn">Click Now</button>
+    </section>
+    <section class="services-container">
+        <h1 class="h-primary center">Our Services</h1>
+        <div id="services">
+            <div class="box">
+                <h2 class="h-secondary center"> Suitable Crop
+                </h2>
+                <p class="center"> India is geographically very vast, hence it has various food and non-food crops which
+                    are cultivated in three main cropping seasons which are rabi, Kharif, and Zaid.
+                    The Kharif season starts with the southwest monsoon and supports the cultivation of tropical crops.
+                    Rabi season is for winter crops as these crops require less amount of water for growth.
+                    While Zaid season comes between Rabi and Kharif.
+
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

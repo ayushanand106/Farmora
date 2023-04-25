@@ -1,0 +1,158 @@
+/*css reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Css variables*/
+:root {
+    --navbar-height: 59px;
+}
+
+/*Navigation bar*/
+#navbar {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    margin: -28px -10px;
+}
+
+#logo img {
+    height: 78px;
+    margin: 65px 77px;
+}
+
+/* logo and image */
+/* navigation bar : logo and image */
+#navbar ul {
+    display: flex;
+    font-family: 'Manrope', sans-serif;
+}
+
+#navbar {
+    position: relative;
+}
+
+#navbar ul {
+    display: flex;
+
+}
+
+#navbar ul li {
+    /*color : white;*/
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#navbar::before {
+    content: "";
+    background: url(../css/bg.jpg) no-repeat center center/cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+#navbar ul li a {
+    color: green;
+    display: block;
+    padding: 3px 33px;
+    border-radius: 20px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#navbar ulwhite li a:hover {
+    color: green;
+    background-color: white;
+    display: block;
+    text-decoration: none ;
+    padding: 3px 33px;
+    border-radius: 20px;
+}
+
+/* HOME SECTION*/
+#home {
+    display: flex;
+    flex-direction: column;
+    padding: 3px 200px;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    background: url(../css/BG2.jpg);
+    height: 74%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.75;
+}
+
+/* Services Section */
+#services {
+    margin: 34px;
+    display: flex;
+}
+
+#services.box {
+    border: 2px solid brown;
+}
+
+#services.box img {
+    height: 160px;
+    margin: auto;
+    display: block;
+}
+
+/* Utility Classes */
+#home h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+#home p {
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+
+}
+
+.h-primary {
+    font-size: 3.8rem;
+    padding: 12px;
+
+}
+
+.h-secondary {
+    font-size: 2.8rem;
+    padding: 12px;
+
+}
+
+.btn {
+    padding: 6px 20px;
+    border: 2px solid white;
+    background-color: yellowgreen;
+    color: green;
+    margin: 20px;
+    font-size: 1-Srem;
+    border-radius: 30px;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+}
+    #weather {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #weather img {
+        margin-bottom: 10px;
+    }
